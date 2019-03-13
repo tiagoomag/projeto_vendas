@@ -22,8 +22,9 @@ public class Cliente extends AbstractEntity<Long> {
 	@Column(unique = true)
 	private String email;
 	
-	
-	//Adicionar relacionamento -> endereço
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "endereco_id_fk")
+	private Endereco endereco; 
 	
 	public String getNome() {
 		return nome;
@@ -64,5 +65,15 @@ public class Cliente extends AbstractEntity<Long> {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	
+	
 		
 }
