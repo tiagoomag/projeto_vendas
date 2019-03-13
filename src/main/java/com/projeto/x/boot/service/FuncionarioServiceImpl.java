@@ -18,19 +18,16 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	@Override
 	public void salvar(Funcionario funcionario) {
 		dao.save(funcionario);
-		
 	}
 
 	@Override
 	public void editar(Funcionario funcionario) {
 		dao.update(funcionario);
-		
 	}
 
 	@Override
 	public void excluir(Long id) {
 		dao.delete(id);
-		
 	}
 
 	@Override

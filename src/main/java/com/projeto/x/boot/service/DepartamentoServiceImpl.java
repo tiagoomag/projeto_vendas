@@ -18,19 +18,16 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 	@Override
 	public void salvar(Departamento departamento) {
 		dao.save(departamento);
-		
 	}
 
 	@Override
 	public void editar(Departamento departamento) {
 		dao.update(departamento);
-		
 	}
 
 	@Override
 	public void excluir(Long id) {
 		dao.delete(id);
-		
 	}
 
 	@Override

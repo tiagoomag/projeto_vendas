@@ -2,7 +2,6 @@ package com.projeto.x.boot.service;
 
 import java.util.List;
 
-
 import com.projeto.x.boot.domain.Funcionario;
 
 public interface FuncionarioService {
