@@ -10,7 +10,7 @@ import com.projeto.x.boot.dao.CargoDao;
 import com.projeto.x.boot.domain.Cargo;
 
 @Service
-@Transactional(readOnly= false) //Não precisa, pois é false pro padrão
+@Transactional(readOnly= false) //false for default
 public class CargoServiceImpl implements CargoService {
 
 	//Injetando Dao

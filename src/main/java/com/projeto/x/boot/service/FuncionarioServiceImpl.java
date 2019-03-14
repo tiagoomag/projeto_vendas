@@ -10,6 +10,7 @@ import com.projeto.x.boot.dao.FuncionarioDao;
 import com.projeto.x.boot.domain.Funcionario;
 
 @Service
+@Transactional
 public class FuncionarioServiceImpl implements FuncionarioService {
 
 	@Autowired

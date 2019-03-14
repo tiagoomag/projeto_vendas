@@ -10,6 +10,7 @@ import com.projeto.x.boot.dao.ClienteDao;
 import com.projeto.x.boot.domain.Cliente;
 
 @Service
+@Transactional
 public class ClienteServiceImpl implements ClienteService {
 
 	@Autowired

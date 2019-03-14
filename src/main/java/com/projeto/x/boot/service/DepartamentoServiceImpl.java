@@ -10,6 +10,7 @@ import com.projeto.x.boot.dao.DepartamentoDao;
 import com.projeto.x.boot.domain.Departamento;
 
 @Service
+@Transactional
 public class DepartamentoServiceImpl implements DepartamentoService {
 
 	@Autowired
