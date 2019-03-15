@@ -5,7 +5,7 @@ import java.util.List;
 import com.projeto.x.boot.domain.Departamento;
 
 public interface DepartamentoService {
-	
+
 	void salvar(Departamento departamento); 
 
 	void editar(Departamento departamento); 
@@ -15,5 +15,7 @@ public interface DepartamentoService {
 	Departamento buscarPorId(Long id);
 	
 	List<Departamento> buscarTodos();
+
+	boolean departamentoTemCargos(Long id);
 
 }

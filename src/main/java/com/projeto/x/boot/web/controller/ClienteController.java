@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Serve para você colocar os endereços da sua aplicação que, quando acessados por algum cliente,
  *  deverão ser direcionados para o determinado método.
  */
-@RequestMapping("clientes") 
+@RequestMapping("/clientes") 
 
 public class ClienteController {
 	
