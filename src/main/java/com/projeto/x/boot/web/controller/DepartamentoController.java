@@ -55,10 +55,10 @@ public class DepartamentoController {
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
 		if(service.departamentoTemCargos(id)) {
-			model.addAttribute("fail", "Departamento não removido. Possui cargo(s) vinculado(s).");
+			model.addAttribute("fail", "Departamento não excluido. Possui cargo(s) vinculado(s).");
 		}else {
 			service.excluir(id);
-			model.addAttribute("success", "Departamento exluído com sucesso.");
+			model.addAttribute("success", "Departamento excluido com sucesso.");
 		}
 			
 		return listar(model); 	//outra forma de retornar 

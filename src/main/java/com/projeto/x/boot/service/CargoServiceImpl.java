@@ -10,7 +10,7 @@ import com.projeto.x.boot.dao.CargoDao;
 import com.projeto.x.boot.domain.Cargo;
 
 @Service
-@Transactional(readOnly= false) //false for default
+@Transactional(readOnly= false) //false por default
 public class CargoServiceImpl implements CargoService {
 
 	//Injetando Dao
@@ -45,6 +45,14 @@ public class CargoServiceImpl implements CargoService {
 	public List<Cargo> buscarTodos() {
 		
 		return dao.findAll();
+	}
+
+	@Override
+	public boolean cargoTemFuncionarios(Long id) {
+		if(buscarPorId(id).getFuncionarios().isEmpty()) {
+			return false;
+		}
+		return true;
 	}
 
 }
