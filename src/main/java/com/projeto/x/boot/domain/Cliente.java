@@ -13,11 +13,14 @@ public class Cliente extends AbstractEntity<Long> {
 	@Column(nullable = false, unique = true)
 	private String sobreNome;
 	
-	@Column(nullable = false, unique = true, length = 11)
+	@Column(nullable = false, unique = true, length = 14)
 	private String cpf;
 	
-	@Column(nullable = false, unique = true, length = 12)
+	@Column(length = 14)
 	private String telefone;
+	
+	@Column(nullable = false, unique = true, length = 15)
+	private String celular;
 	
 	@Column(unique = true)
 	private String email;
@@ -57,6 +60,14 @@ public class Cliente extends AbstractEntity<Long> {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
 
 	public String getEmail() {
 		return email;
@@ -74,6 +85,4 @@ public class Cliente extends AbstractEntity<Long> {
 		this.endereco = endereco;
 	}
 	
-	
-		
 }

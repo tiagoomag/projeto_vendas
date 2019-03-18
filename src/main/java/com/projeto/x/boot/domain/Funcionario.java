@@ -11,35 +11,36 @@ import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="FUNCIONARIOS")
+@Table(name = "FUNCIONARIOS")
 public class Funcionario extends AbstractEntity<Long> {
-	
+
 	@Column(nullable = false, unique = true)
 	private String nome;
-	
+
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	@Column(nullable = false, columnDefinition = "DECIMAL(7) DEFAULT 0.00")
-	private BigDecimal salario; //columnDefinition: Defini o tipo de dados que será armazenado no bando de dados
-		
+	private BigDecimal salario; // columnDefinition: Defini o tipo de dados que será armazenado no bando de
+								// dados
+
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "data_entrada", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataEntrada;
-	
+
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "data_saida", columnDefinition = "DATE")
 	private LocalDate dataSaida;
-	
+
 	/*
-	 * CascadeType.ALL: Quando um funcionario for inserido o endereço vai ser inserido também
-	 * por cascata. Editar e excluir também.
+	 * CascadeType.ALL: Quando um funcionario for inserido o endereço vai ser
+	 * inserido também por cascata. Editar e excluir também.
 	 */
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id_fk")
-	private Endereco endereco; 
-	
+	private Endereco endereco;
+
 	@ManyToOne
-	@JoinColumn(name="cargo_id_fk")
+	@JoinColumn(name = "cargo_id_fk")
 	private Cargo cargo;
 
 	public String getNome() {
@@ -90,5 +91,4 @@ public class Funcionario extends AbstractEntity<Long> {
 		this.cargo = cargo;
 	}
 
-	
 }

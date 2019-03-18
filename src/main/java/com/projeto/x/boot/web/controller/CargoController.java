@@ -64,11 +64,11 @@ public class CargoController {
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
-		attr.addAttribute("fail", "Cargo não excluido. Possui cargo(s) vinculado(s).");
 		if (cargoService.cargoTemFuncionarios(id)) {
+			attr.addFlashAttribute("fail", "Cargo não excluido. Possui cargo(s) vinculado(s).");
 		} else {
 			cargoService.excluir(id);
-			attr.addAttribute("success", "Cargo excluido com sucesso.");
+			attr.addFlashAttribute("success", "Cargo excluido com sucesso.");
 		}
 
 		return "redirect:/cargos/listar";
