@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head><meta charset="UTF-8"/></head>
+<body>
+	
+	    <section class="layout-content" layout:fragment="corpo">
+	        <div class="page-header">
+	            <nav class="navbar navbar-expand-md navbar-top bg-light">
+	                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	                    <ul class="navbar-nav">
+	                        <li class="nav-item active">
+	                            <i class="oi oi-caret-right"></i>
+	                            <span>Cadastrar Produtos</span>
+	                        </li>
+	                    </ul>
+	                </div>
+	                <a class="btn btn-primary btn-md" href="/produtos/listar" role="button">
+	                    <span class="oi oi-spreadsheet" title="Cadastro" aria-hidden="true"></span>
+	                    <span>Listar Produtos</span>
+	                </a>
+	            </nav>
+	        </div>
+	
+	        <div class="container" id="cadastro">
+	        
+	        	<div th:replace="fragments/alert"></div>
+	        
+	            <form th:action="${produto.id == null} ? @{/produtos/salvar} : @{/produtos/editar}" 
+	                  th:object="${produto}" method="POST">
+	                <div class="form-row">
+	                    <div class="form-group col-md-6">
+	                        <label for="nome">Nome do Produto</label>
+	                        <input type="text" class="form-control" id="nome" placeholder="Nome Completo"
+	                               autofocus="autofocus" th:field="*{nome}"/>
+	                        <div class="invalid-feedback">
+	
+	                        </div>
+	                    </div>
+	                     <div class="form-group col-md-4">
+	                        <label for="unidadeMedida">Unidade de medida</label>
+	                        <select id="unidadeMedida" class="form-control" th:field="*{unidadeMedida}">
+	                            <option value="">Selecione...</option>
+	                            <option th:each="unidadeMedida : ${unidadeMedidas}" th:value="${unidadeMedida}" th:text="${unidadeMedida.sigla}"></option>
+	                        </select>
+	                        <div class="invalid-feedback">
+	
+	                        </div>
+	                    </div>
+	                </div>
+	                 <div class="form-row">
+	                    <div class="form-group col-md-6">
+	                        <label for="descricao">Descrição do Produto</label>
+	                        <input type="text" class="form-control" id="descricao" placeholder="Ex.: Modelo H28, 8Gbs de Memória"
+	                               autofocus="autofocus" th:field="*{descricao}"/>
+	                        <div class="invalid-feedback">
+	
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-row">
+	                     <div class="form-group col-md-4">
+	                        <label for="tamanho">Tamanho</label>
+	                        <select id="tamanho" class="form-control" th:field="*{tamanho}">
+	                            <option value="">Selecione...</option>
+	                            <option th:each="tamanho : ${tamanhos}" th:value="${tamanho}" th:text="${tamanho.sigla}"></option>
+	                        </select>
+	                        <div class="invalid-feedback">
+	
+	                        </div>
+	                    </div>
+	                     <div class="form-group col-md-4">
+	                        <label for="cor">Cor</label>
+	                        <select id="cor" class="form-control" th:field="*{cor}">
+	                            <option value="">Selecione...</option>
+	                            <option th:each="cor : ${cores}" th:value="${cor}" th:text="${cor.sigla}"></option>
+	                        </select>
+	                        <div class="invalid-feedback">
+	
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-row">
+	                	 <div class="form-group col-md-6">
+	                        <label for="precoCusto">Preço de Custo</label>
+	                        <input type="text" class="form-control" id="precoCusto" data-mask="#.##0,00"
+	                               data-mask-reverse="true" th:field="*{precoCusto}"/>
+	                        <div class="invalid-feedback">
+	
+	                        </div>
+	                    </div>
+	                    <div class="form-group col-md-6">
+	                        <label for="precoVenda">Preço de Venda</label>
+	                        <input type="text" class="form-control" id="precoVenda" data-mask="#.##0,00"
+	                               data-mask-reverse="true" th:field="*{precoVenda}"/>
+	                        <div class="invalid-feedback">
+	
+	                        </div>
+	                    </div>
+	                </div>
+	                <input type="hidden" id="id" th:field="*{id}"/>
+	                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+	            </form>
+	        </div>
+	    </section>
+</body>
+</html>		

@@ -14,7 +14,8 @@ public enum Cor {
 	VERDE("VERDE", "Verde"),
 	CIANO("CIANO", "Ciano"),
 	AZUL("Azul", "Azul"),
-	VIOLETA("VIOLETA", "Violeta");
+	VIOLETA("VIOLETA", "Violeta"),
+	OUTROS("OUTROS", "Outros");
 	
 	private String sigla;
 	private String descricao;

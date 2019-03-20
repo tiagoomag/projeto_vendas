@@ -12,18 +12,21 @@ import org.springframework.format.annotation.NumberFormat.Style;
 @Table(name="PRODUTOS")
 public class Produto extends AbstractEntity<Long> {
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 100)
 	private String nome;
+
+	@Column(length = 100)
+	private String descricao;
 	
-	@Column(name="unidade_medida", nullable = false, length = 10)
+	@Column(name="unidade_medida", length = 10)
 	@Enumerated(EnumType.STRING)
 	private UnidadeMedida unidadeMedida;
 	
-	@Column(nullable = true, length = 3)
+	@Column(length = 3)
 	@Enumerated(EnumType.STRING)
 	private Tamanho tamanho;
 	
-	@Column(nullable = true, length = 10)
+	@Column(nullable = false, length = 10)
 	@Enumerated(EnumType.STRING)
 	private Cor cor;
 
@@ -34,7 +37,7 @@ public class Produto extends AbstractEntity<Long> {
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	@Column(name="preco_venda", nullable = false, columnDefinition = "DECIMAL(7) DEFAULT 0.00")
 	private BigDecimal precoVenda;
-	
+
 	private boolean ativo;
 	
 	/*
@@ -98,8 +101,13 @@ public class Produto extends AbstractEntity<Long> {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	
-	
-	
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
 }

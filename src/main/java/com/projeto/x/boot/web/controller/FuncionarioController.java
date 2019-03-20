@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.projeto.x.boot.domain.Cargo;
-import com.projeto.x.boot.domain.Departamento;
 import com.projeto.x.boot.domain.Funcionario;
 import com.projeto.x.boot.domain.UF;
 import com.projeto.x.boot.service.CargoService;
