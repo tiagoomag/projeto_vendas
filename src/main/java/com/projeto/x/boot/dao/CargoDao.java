@@ -6,9 +6,9 @@ import com.projeto.x.boot.domain.Cargo;
 
 public interface CargoDao {
 	
-	void save(Cargo Cargo);
+	void save(Cargo cargo);
 	
-	void update(Cargo Cargo);
+	void update(Cargo cargo);
 	
 	void delete(Long id);
 	
