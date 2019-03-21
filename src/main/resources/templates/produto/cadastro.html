@@ -2,7 +2,6 @@
 <html layout:decorate="~{layout}">
 <head><meta charset="UTF-8"/></head>
 <body>
-	
 	    <section class="layout-content" layout:fragment="corpo">
 	        <div class="page-header">
 	            <nav class="navbar navbar-expand-md navbar-top bg-light">
@@ -29,8 +28,8 @@
 	                  th:object="${produto}" method="POST">
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
-	                        <label for="nome">Nome do Produto</label>
-	                        <input type="text" class="form-control" id="nome" placeholder="Nome Completo"
+	                        <label for="nome">Nome</label>
+	                        <input type="text" class="form-control" id="nome" placeholder="Nome do produto"
 	                               autofocus="autofocus" th:field="*{nome}"/>
 	                        <div class="invalid-feedback">
 	
@@ -56,7 +55,15 @@
 	
 	                        </div>
 	                    </div>
-	                </div>
+					<div class="form-group col-md-4">
+						<label for="marca">Marca</label> <select
+								id="marca" class="form-control" th:field="*{marca}">
+								<option value="">Selecione</option>
+								<option th:each="m : ${marcas}" th:value="${m.id}"
+									th:text="${m.nome}"></option>
+						</select>
+					</div>
+				</div>
 	                <div class="form-row">
 	                     <div class="form-group col-md-4">
 	                        <label for="tamanho">Tamanho</label>
@@ -81,7 +88,7 @@
 	                </div>
 	                <div class="form-row">
 	                	 <div class="form-group col-md-6">
-	                        <label for="precoCusto">Preço de Custo</label>
+	                        <label for="precoCusto">Preço de custo</label>
 	                        <input type="text" class="form-control" id="precoCusto" data-mask="#.##0,00"
 	                               data-mask-reverse="true" th:field="*{precoCusto}"/>
 	                        <div class="invalid-feedback">
@@ -89,7 +96,7 @@
 	                        </div>
 	                    </div>
 	                    <div class="form-group col-md-6">
-	                        <label for="precoVenda">Preço de Venda</label>
+	                        <label for="precoVenda">Preço de venda</label>
 	                        <input type="text" class="form-control" id="precoVenda" data-mask="#.##0,00"
 	                               data-mask-reverse="true" th:field="*{precoVenda}"/>
 	                        <div class="invalid-feedback">
@@ -97,6 +104,28 @@
 	                        </div>
 	                    </div>
 	                </div>
+	                
+	                 <div class="form-row">
+	                    <div class="form-group col-md-6">
+	                        <label for="codigoBarras">Código de Barras</label>
+	                        <input type="text" class="form-control" id="codigoBarras" 
+	                                autofocus="autofocus" th:field="*{codigoBarras}"/>
+	                        <div class="invalid-feedback">
+	
+	                        </div>
+	                    </div> &nbsp; &nbsp; 
+	                  <div class="form-row"> 
+	                     <div class="form-group col-md-6">
+	                        <label for="ativo">Ativo</label>
+	                        <input type="checkbox" class="form-control" id="ativo" 
+	                                autofocus="autofocus" th:field="*{ativo}"/>
+	                        <div class="invalid-feedback">
+	
+	                        </div>
+	                    </div>
+	                   </div> 
+	                </div>
+	                
 	                <input type="hidden" id="id" th:field="*{id}"/>
 	                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 	            </form>

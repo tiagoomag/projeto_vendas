@@ -37,13 +37,20 @@ public class Produto extends AbstractEntity<Long> {
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	@Column(name="preco_venda", nullable = false, columnDefinition = "DECIMAL(7) DEFAULT 0.00")
 	private BigDecimal precoVenda;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "marca_id_fk")
+	private Marca marca;
+	
+	@Column(length = 100)
+	private String codigoBarras;
 
 	private boolean ativo;
 	
 	/*
 	 * Relacionamentos: fornecedor, categoria,
 	 * estoque e marca.
-	 * Campos: imagem e codigo de barras
+	 * Campos: imagem.
 	 */
 
 	public String getNome() {
@@ -108,6 +115,22 @@ public class Produto extends AbstractEntity<Long> {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
+	public String getCodigoBarras() {
+		return codigoBarras;
+	}
+
+	public void setCodigoBarras(String codigoBarras) {
+		this.codigoBarras = codigoBarras;
 	}
 	
 }
