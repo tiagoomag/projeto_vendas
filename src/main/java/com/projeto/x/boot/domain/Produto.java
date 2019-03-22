@@ -49,7 +49,7 @@ public class Produto extends AbstractEntity<Long> {
 	
 	/*
 	 * Relacionamentos: fornecedor, categoria,
-	 * estoque e marca.
+	 * estoque.
 	 * Campos: imagem.
 	 */
 
