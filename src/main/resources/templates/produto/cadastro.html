@@ -57,7 +57,7 @@
 	                    </div>
 					<div class="form-group col-md-4">
 						<label for="marca">Marca</label> <select
-								id="marca" class="form-control" th:field="*{marca}">
+								id="marca" class="form-control" th:field="*{marca.id}">
 								<option value="">Selecione</option>
 								<option th:each="m : ${marcas}" th:value="${m.id}"
 									th:text="${m.nome}"></option>
@@ -125,8 +125,8 @@
 	                    </div>
 	                   </div> 
 	                </div>
-	                
 	                <input type="hidden" id="id" th:field="*{id}"/>
+	                <input type="hidden" id="marca.id" th:field="*{marca.id}"/>
 	                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 	            </form>
 	        </div>

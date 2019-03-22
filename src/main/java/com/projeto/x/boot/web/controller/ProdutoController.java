@@ -43,7 +43,7 @@ public class ProdutoController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Produto produto, RedirectAttributes attr) {
+	public String salvar(Produto produto, Marca marca,  RedirectAttributes attr) {
 		produtoService.salvar(produto);
 		attr.addFlashAttribute("success", "Produto inserido com sucesso.");
 		return "redirect:/produtos/listar";

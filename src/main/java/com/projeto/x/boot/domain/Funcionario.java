@@ -19,8 +19,8 @@ public class Funcionario extends AbstractEntity<Long> {
 
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	@Column(nullable = false, columnDefinition = "DECIMAL(7) DEFAULT 0.00")
-	private BigDecimal salario; // columnDefinition: Defini o tipo de dados que será armazenado no bando de
-								// dados
+	private BigDecimal salario; // columnDefinition: Defini o tipo de dados que será armazenado no BD
+								
 
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "data_entrada", nullable = false, columnDefinition = "DATE")

@@ -52,14 +52,17 @@ body {
 
 .sidebar .nav-item {
 	width: 100%;
+	font-size: 15px;
 }
 
 .sidebar .nav-item {
 	margin-left: 0;
+	font-size: 13px;
 }
 
 .sidebar .nav-link {
 	border-radius: 0;
+	
 } 
 
 .sidebar ul li:hover a, .menu ul li.active a{
