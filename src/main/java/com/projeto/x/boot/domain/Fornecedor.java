@@ -10,6 +10,7 @@ public class Fornecedor extends AbstractEntity<Long> {
 	@Column(nullable = false, unique = true)
 	private String nome;
 	
+	//min = 14 max = 18
 	@Column(nullable = false, unique = true, length = 18)
 	private String cpfCnpj;
 	

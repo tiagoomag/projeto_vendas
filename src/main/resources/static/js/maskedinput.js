@@ -2,10 +2,16 @@
  * Máscara para CPF e CNPJ - Fornecedor
  */
 
-var cpfCnpj= $("#cpfCnpj").val().length;
- 
-    if(cnpjcpf < 11){
-        $("#cpfCnpj").mask("999.999.999-99");
-    } else {
-        $("#cpfCnpj").mask("99.999.999/9999-99");
-    }    
+console.log('mask');
+
+$(document).on('keydown', '[data-mask-for-cpf-cnpj]', function (e) {
+
+    var digit = e.key.replace(/\D/g, '');
+
+    var value = $(this).val().replace(/\D/g, '');
+
+    var size = value.concat(digit).length;
+
+    $(this).mask((size <= 11) ? '000.000.000-00' : '00.000.000/0000-00');
+});
+
