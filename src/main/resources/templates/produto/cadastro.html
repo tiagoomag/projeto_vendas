@@ -87,6 +87,16 @@
 	                    </div>
 	                </div>
 	                <div class="form-row">
+	                	<div class="form-group col-md-4">
+							<label for="fornecedores">Fornecedor</label> <select
+								id="fornecedores" class="form-control" th:field="*{fornecedores}">
+								<option value="">Selecione</option>
+								<option th:each="f : ${listaFornecedores}" th:value="${f.id}"
+									th:text="${f.nome}"></option>
+							</select>
+					</div>
+	                </div>
+	                <div class="form-row">
 	                	 <div class="form-group col-md-6">
 	                        <label for="precoCusto">Preço de custo</label>
 	                        <input type="text" class="form-control" id="precoCusto" data-mask="#.##0,00"

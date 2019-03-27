@@ -1,6 +1,7 @@
 package com.projeto.x.boot.domain;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -42,6 +43,12 @@ public class Produto extends AbstractEntity<Long> {
 	@JoinColumn(name = "marca_id_fk")
 	private Marca marca;
 	
+	@ManyToMany(cascade = CascadeType.ALL)  //1 produto -> N fornecedores. 1 fornecedor - > N produtos
+	@JoinTable(name = "produtos_fornecedores", joinColumns = { @JoinColumn(name = "produto_id_fk") }, 
+			inverseJoinColumns = { @JoinColumn(name = "fornecedor_id_fk") })
+	private List<Fornecedor> fornecedores;
+	
+	
 	@Column(length = 100)
 	private String codigoBarras;
 
@@ -52,9 +59,19 @@ public class Produto extends AbstractEntity<Long> {
 	 * estoque.
 	 * Campos: imagem.
 	 */
+	
+	
 
 	public String getNome() {
 		return nome;
+	}
+
+	public List<Fornecedor> getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(List<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
 	}
 
 	public void setNome(String nome) {

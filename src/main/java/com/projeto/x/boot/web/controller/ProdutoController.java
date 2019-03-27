@@ -1,5 +1,6 @@
 package com.projeto.x.boot.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.projeto.x.boot.domain.Cor;
+import com.projeto.x.boot.domain.Fornecedor;
 import com.projeto.x.boot.domain.Marca;
 import com.projeto.x.boot.domain.Produto;
 import com.projeto.x.boot.domain.Tamanho;
 import com.projeto.x.boot.domain.UnidadeMedida;
+import com.projeto.x.boot.service.FornecedorService;
 import com.projeto.x.boot.service.MarcaService;
 import com.projeto.x.boot.service.ProdutoService;
 
@@ -29,6 +32,9 @@ public class ProdutoController {
 	
 	@Autowired
 	MarcaService marcaService;
+	
+	@Autowired 
+	FornecedorService fornecedorService;
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Produto produto) {
@@ -43,7 +49,8 @@ public class ProdutoController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Produto produto, Marca marca,  RedirectAttributes attr) {
+	public String salvar(Produto produto, Marca marca, List <Fornecedor> fornecedores,  RedirectAttributes attr) {
+		//produto.setFornecedores(fornecedores);
 		produtoService.salvar(produto);
 		attr.addFlashAttribute("success", "Produto inserido com sucesso.");
 		return "redirect:/produtos/listar";
@@ -72,6 +79,11 @@ public class ProdutoController {
 	@ModelAttribute("marcas")
 	public List<Marca> listaDeMarcas() {
 		return marcaService.buscarTodos();
+	}
+	
+	@ModelAttribute("listaFornecedores")
+	public List<Fornecedor> listaDeFornecedores() {
+		return fornecedorService.buscarTodos();
 	}
 	
 	@ModelAttribute("unidadeMedidas")

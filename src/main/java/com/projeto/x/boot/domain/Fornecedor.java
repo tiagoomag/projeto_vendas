@@ -1,5 +1,7 @@
 package com.projeto.x.boot.domain;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
@@ -26,6 +28,18 @@ public class Fornecedor extends AbstractEntity<Long> {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id_fk")
 	private Endereco endereco;
+	
+    @ManyToMany(mappedBy="fornecedores")
+    private List<Produto> produtos;
+
+    
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
 
 	public String getNome() {
 		return nome;
