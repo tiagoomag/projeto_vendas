@@ -8,7 +8,7 @@ import com.projeto.x.boot.domain.Departamento;
 import com.projeto.x.boot.service.DepartamentoService;
 
 @Component
-public class StringToDepartamentoConverter implements Converter<String, Departamento> {
+public class StringToDepartamentoConversor implements Converter<String, Departamento> {
 	
 	@Autowired
 	private DepartamentoService service;
