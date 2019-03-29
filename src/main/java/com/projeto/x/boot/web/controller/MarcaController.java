@@ -46,11 +46,15 @@ public class MarcaController {
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
-		marcaService.excluir(id);
-		attr.addFlashAttribute("success", "Marca excluido com sucesso.");
+		if(marcaService.produtoTemMarcas(id)) {
+			attr.addFlashAttribute("fail", "Marca não excluida. Possui produto(s) vinculado(s).");
+		}else {
+			marcaService.excluir(id);
+			attr.addFlashAttribute("success", "Marca excluido com sucesso.");
+		}
 		return "redirect:/marcas/listar"; 	
 	}
-	
+			
 	@GetMapping("/listar")
 	public String listar(ModelMap model ) {
 		model.addAttribute("marcas", marcaService.buscarTodos());

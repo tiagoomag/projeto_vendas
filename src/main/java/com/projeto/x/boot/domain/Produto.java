@@ -39,7 +39,9 @@ public class Produto extends AbstractEntity<Long> {
 	@Column(name="preco_venda", nullable = false, columnDefinition = "DECIMAL(7) DEFAULT 0.00")
 	private BigDecimal precoVenda;
 	
-	@OneToOne
+	
+	//1 marca tem muitos produtos. :: Ler da direita pra esquerda
+	@ManyToOne
 	@JoinColumn(name = "marca_id_fk")
 	private Marca marca;
 	

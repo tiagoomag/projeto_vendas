@@ -80,10 +80,11 @@ public class ProdutoController {
 		return marcaService.buscarTodos();
 	}
 	
+	/*
 	@ModelAttribute("listaFornecedores")
 	public List<Fornecedor> listaDeFornecedores() {
 		return fornecedorService.buscarTodos();
-	}
+	}*/
 	
 	@ModelAttribute("unidadeMedidas")
 	public UnidadeMedida[] getUnidadeMedidas() {

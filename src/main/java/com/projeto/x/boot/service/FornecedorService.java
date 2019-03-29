@@ -16,5 +16,4 @@ public interface FornecedorService {
 	
 	List<Fornecedor> buscarTodos();
 
-
 }

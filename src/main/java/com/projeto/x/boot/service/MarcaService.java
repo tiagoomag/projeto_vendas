@@ -16,4 +16,6 @@ public interface MarcaService {
 	
 	List<Marca> buscarTodos();
 
+	boolean produtoTemMarcas(Long id);
+
 }

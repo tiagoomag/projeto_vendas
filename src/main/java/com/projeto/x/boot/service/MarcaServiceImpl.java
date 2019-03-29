@@ -45,4 +45,12 @@ public class MarcaServiceImpl implements MarcaService{
 		return dao.findAll();
 	}
 
+	@Override
+	public boolean produtoTemMarcas(Long id) {
+		if(buscarPorId(id).getProdutos().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+
 }
