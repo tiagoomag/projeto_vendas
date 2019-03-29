@@ -29,17 +29,9 @@ public class Fornecedor extends AbstractEntity<Long> {
 	@JoinColumn(name = "endereco_id_fk")
 	private Endereco endereco;
 	
-    @ManyToMany(mappedBy="fornecedores")
-    private List<Produto> produtos;
-
-    
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
+    /*
+	@ManyToMany(mappedBy="fornecedores")
+    private List<Produto> produtos; */
 
 	public String getNome() {
 		return nome;
