@@ -12,7 +12,6 @@ public class Departamento extends  AbstractEntity<Long> {
 	@Column(name = "nome", nullable = false, unique = true, length = 60)
 	private String nome;
 
-	
 	/*
 	 * Departamento tem uma lista de cargos OneToMany: Muitos cargos para 1 departamento
 	 * Departamento <-> Cargo: Rel. Bidirecional
@@ -20,7 +19,7 @@ public class Departamento extends  AbstractEntity<Long> {
 	 * mappedBy: Atributo que está fazendo parte do lado forte da relação, no caso: Departamento, lá na classe cargo.
 	 * Resumo: Lado departamento -> Lado fraco da relação, Lado cargo -> Lado forte da relação. 
 	 */
-	
+	 
 	@OneToMany(mappedBy = "departamento") 
 	private List<Cargo> cargos;
 	
