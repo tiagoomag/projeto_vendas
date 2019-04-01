@@ -2,6 +2,8 @@ package com.projeto.x.boot.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.format.annotation.NumberFormat;
@@ -29,12 +31,12 @@ public class Funcionario extends AbstractEntity<Long> {
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "data_saida", columnDefinition = "DATE")
 	private LocalDate dataSaida;
-
+	
 	/*
 	 * CascadeType.ALL: Quando um funcionario for inserido o endereço vai ser
 	 * inserido também por cascata. Editar e excluir também.
 	 */
-
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id_fk")
 	private Endereco endereco;
@@ -43,6 +45,10 @@ public class Funcionario extends AbstractEntity<Long> {
 	@JoinColumn(name = "cargo_id_fk")
 	private Cargo cargo;
 
+	//Muitas vendas pertencem a 1 funcionario
+	@OneToMany(mappedBy = "funcionario")
+	private List<Pedido> pedidos;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -90,5 +96,16 @@ public class Funcionario extends AbstractEntity<Long> {
 	public void setCargo(Cargo cargo) {
 		this.cargo = cargo;
 	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	
+	
 
 }

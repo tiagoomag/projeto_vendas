@@ -3,9 +3,7 @@ package com.projeto.x.boot.web.conversor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 
-import com.projeto.x.boot.domain.Cargo;
 import com.projeto.x.boot.domain.Marca;
-import com.projeto.x.boot.service.CargoService;
 import com.projeto.x.boot.service.MarcaService;
 
 public class StringToMarcaConversor implements Converter<String, Marca>{

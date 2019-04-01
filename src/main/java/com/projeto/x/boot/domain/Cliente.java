@@ -1,5 +1,7 @@
 package com.projeto.x.boot.domain;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
@@ -28,6 +30,9 @@ public class Cliente extends AbstractEntity<Long> {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id_fk")
 	private Endereco endereco; 
+	
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos;
 	
 	public String getNome() {
 		return nome;
@@ -83,6 +88,14 @@ public class Cliente extends AbstractEntity<Long> {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 	
 }
