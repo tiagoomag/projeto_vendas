@@ -105,7 +105,5 @@ public class Funcionario extends AbstractEntity<Long> {
 		this.pedidos = pedidos;
 	}
 
-	
-	
 
 }

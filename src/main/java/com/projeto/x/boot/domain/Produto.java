@@ -1,6 +1,7 @@
 package com.projeto.x.boot.domain;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.NumberFormat;
@@ -44,11 +46,13 @@ public class Produto extends AbstractEntity<Long> {
 	@Column(name="preco_venda", nullable = false, columnDefinition = "DECIMAL(7) DEFAULT 0.00")
 	private BigDecimal precoVenda;
 	
-	
 	//1 marca tem muitos produtos. :: Ler da direita pra esquerda
 	@ManyToOne
 	@JoinColumn(name = "marca_id_fk")
 	private Marca marca;
+	
+	@OneToMany(mappedBy = "produto")
+	List<PedidoProduto> listaPedidosProdutos;
 	
 	/*
 	@ManyToMany(cascade = CascadeType.ALL)  //1 produto -> N fornecedores. 1 fornecedor - > N produtos
@@ -56,16 +60,19 @@ public class Produto extends AbstractEntity<Long> {
 			inverseJoinColumns = { @JoinColumn(name = "fornecedor_id_fk") })
 	private List<Fornecedor> fornecedores; */
 	
-	
 	@Column(length = 100)
 	private String codigoBarras;
 
+	public List<PedidoProduto> getListaPedidosProdutos() {
+		return listaPedidosProdutos;
+	}
+
+	public void setListaPedidosProdutos(List<PedidoProduto> listaPedidosProdutos) {
+		this.listaPedidosProdutos = listaPedidosProdutos;
+	}
+
 	private boolean ativo;
-	
-	/*
-	 * Relacionamentos: estoque. 
-	 * Campos: imagem.
-	 */
+
 	
 	public String getNome() {
 		return nome;
