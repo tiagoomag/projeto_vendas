@@ -1,6 +1,5 @@
 package com.projeto.x.boot.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.projeto.x.boot.domain.Cor;
-import com.projeto.x.boot.domain.Fornecedor;
 import com.projeto.x.boot.domain.Marca;
 import com.projeto.x.boot.domain.Produto;
 import com.projeto.x.boot.domain.Tamanho;
