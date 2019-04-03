@@ -1,5 +1,6 @@
 package com.projeto.x.boot.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class ProdutoPedidoController {
 	@Autowired
 	ProdutoService produtoService;
 	
-	private List<ProdutoPedido> listaProdutosPedido;
+	private List<ProdutoPedido> listaProdutosPedido = new ArrayList<>();
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(ProdutoPedido produtoPedido) {
@@ -49,11 +50,23 @@ public class ProdutoPedidoController {
 	}
 	
 	@PostMapping("/adicionarProduto")
-	public String adicionarProduto(ProdutoPedido produtoPedido, RedirectAttributes attr, int quantidade) {
+	public String adicionarProduto(Produto produto, int quantidade, RedirectAttributes attr) {
+		ProdutoPedido produtoPedido = new ProdutoPedido();
+		produtoPedido.setProduto(produto);
+		produtoPedido.setQuantidade(quantidade);
 		listaProdutosPedido.add(produtoPedido);
+		
 		attr.addFlashAttribute("success", "Produto adicionado");
 		return "redirect:/produtosPedidos/cadastrar";
 	}
+	
+	@GetMapping("/removerProduto")
+	public String removerProduto(Produto produto, RedirectAttributes attr) {
+		listaProdutosPedido.remove(produto);
+		attr.addFlashAttribute("success", "Produto removido");
+		return "redirect:/produtosPedidos/cadastrar";
+	}
+	
 	
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {

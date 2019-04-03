@@ -1,4 +1,4 @@
-/*package com.projeto.x.boot.web.conversor;
+package com.projeto.x.boot.web.conversor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
@@ -22,4 +22,4 @@ public class StringToProdutoConversor implements Converter<String, Produto> {
 		return service.buscarPorId(id);
 	}
 
-}*/
+}
