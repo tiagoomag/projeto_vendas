@@ -11,7 +11,7 @@ import org.springframework.format.annotation.NumberFormat.Style;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "pedidos_produtos")
-public class PedidoProduto extends AbstractEntity<Long> {
+public class ProdutoPedido extends AbstractEntity<Long> {
 	
 	@Column(nullable = false)
 	private int quantidade;
@@ -72,8 +72,4 @@ public class PedidoProduto extends AbstractEntity<Long> {
 		this.produto = produto;
 	}
 	
-	
-	
-	
-
 }

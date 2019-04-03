@@ -12,68 +12,67 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.projeto.x.boot.domain.PedidoProduto;
+import com.projeto.x.boot.domain.ProdutoPedido;
 import com.projeto.x.boot.domain.Produto;
-import com.projeto.x.boot.service.PedidoProdutoService;
+import com.projeto.x.boot.service.ProdutoPedidoService;
 import com.projeto.x.boot.service.ProdutoService;
 
 @Controller
-@RequestMapping("/pedidosProdutos")
-public class PedidoProdutoController {
+@RequestMapping("/produtosPedidos")
+public class ProdutoPedidoController {
 	
 	
 	@Autowired
-	PedidoProdutoService pedidoProdutoService;
+	ProdutoPedidoService produtoPedidoService;
 	
 	@Autowired
 	ProdutoService produtoService;
 	
-	private List<PedidoProduto> listaProdutosPedido;
+	private List<ProdutoPedido> listaProdutosPedido;
 	
 	@GetMapping("/cadastrar")
-	public String cadastrar(PedidoProduto pedidoProduto) {
-		return "/pedido_produto/cadastro";
+	public String cadastrar(ProdutoPedido produtoPedido) {
+		return "/produto_pedido/cadastro";
 	}
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		model.addAttribute("pedidosProdutos", pedidoProdutoService.buscarTodos());
-		return "/pedido_produto/lista";
+		model.addAttribute("produtosPedidos", produtoPedidoService.buscarTodos());
+		return "/produto_pedido/lista";
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(PedidoProduto pedidoProduto, RedirectAttributes attr) {
-		pedidoProdutoService.salvar(pedidoProduto);
+	public String salvar(ProdutoPedido produtoPedido, RedirectAttributes attr) {
+		produtoPedidoService.salvar(produtoPedido);
 		attr.addFlashAttribute("success", "Pedido inserido com sucesso.");
-		return "redirect:/pedidosProdutos/listar";
+		return "redirect:/produtosPedidos/listar";
 	}
 	
 	@PostMapping("/adicionarProduto")
-	public String adicionarProduto(PedidoProduto pedidoProduto, Produto produto, RedirectAttributes attr) {
-		pedidoProduto.setProduto(produto);
-		listaProdutosPedido.add(pedidoProduto);
+	public String adicionarProduto(ProdutoPedido produtoPedido, RedirectAttributes attr, int quantidade) {
+		listaProdutosPedido.add(produtoPedido);
 		attr.addFlashAttribute("success", "Produto adicionado");
-		return null;
+		return "redirect:/produtosPedidos/cadastrar";
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-		model.addAttribute("pedidosProdutos", pedidoProdutoService.buscarPorId(id));
-		return "pedido-produto/cadastro";
+		model.addAttribute("pedidosProdutos", produtoPedidoService.buscarPorId(id));
+		return "produto_pedido/cadastro";
 	}
 	
 	@PostMapping("/editar")
-	public String editar(PedidoProduto pedidoProduto, RedirectAttributes attr) {
-		pedidoProdutoService.editar(pedidoProduto);
+	public String editar(ProdutoPedido produtoPedido, RedirectAttributes attr) {
+		produtoPedidoService.editar(produtoPedido);
 		attr.addFlashAttribute("success", "Pedido editado com sucesso.");
-		return "redirect:/pedidosProdutos/listar";
+		return "redirect:/produtosPedidos/listar";
 	}	
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
-		pedidoProdutoService.excluir(id);
+		produtoPedidoService.excluir(id);
 		attr.addFlashAttribute("success", "Pedido excluido com sucesso.");
-		return "redirect:/pedidosProdutos/listar"; 	
+		return "redirect:/produtosPedidos/listar"; 	
 	}
 	
 	@ModelAttribute("produtos")
@@ -83,11 +82,11 @@ public class PedidoProdutoController {
 
 	//lista de produtos adicionados
 	@ModelAttribute("listaProdutosAdicionados")
-	public List<PedidoProduto> getListaProdutosPedido() {
+	public List<ProdutoPedido> getListaProdutosPedido() {
 		return listaProdutosPedido;
 	}
 
-	public void setListaProdutosPedido(List<PedidoProduto> listaProdutosPedido) {
+	public void setListaProdutosPedido(List<ProdutoPedido> listaProdutosPedido) {
 		this.listaProdutosPedido = listaProdutosPedido;
 	}
 	

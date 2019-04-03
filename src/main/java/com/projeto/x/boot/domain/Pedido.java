@@ -49,7 +49,7 @@ public class Pedido extends AbstractEntity<Long> {
 	private Cliente cliente;
 	
 	@OneToMany(mappedBy = "pedido")
-	private List<PedidoProduto> listaDeItens; //itens de um pedido -> produtos 
+	private List<ProdutoPedido> listaDeProdutos; //itens de um pedido -> produtos 
 	
 	public LocalDate getDataPedido() {
 		return dataPedido;
@@ -91,12 +91,13 @@ public class Pedido extends AbstractEntity<Long> {
 		this.total = total;
 	}
 
-	public List<PedidoProduto> getListaDeItens() {
-		return listaDeItens;
+
+	public List<ProdutoPedido> getListaDeProdutos() {
+		return listaDeProdutos;
 	}
 
-	public void setListaDeItens(List<PedidoProduto> listaDeItens) {
-		this.listaDeItens = listaDeItens;
+	public void setListaDeProdutos(List<ProdutoPedido> listaDeProdutos) {
+		this.listaDeProdutos = listaDeProdutos;
 	}
 
 	public BigDecimal getDesconto() {

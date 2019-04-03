@@ -52,7 +52,7 @@ public class Produto extends AbstractEntity<Long> {
 	private Marca marca;
 	
 	@OneToMany(mappedBy = "produto")
-	List<PedidoProduto> listaPedidosProdutos;
+	List<ProdutoPedido> listaProdutosPedidos;
 	
 	/*
 	@ManyToMany(cascade = CascadeType.ALL)  //1 produto -> N fornecedores. 1 fornecedor - > N produtos
@@ -63,12 +63,14 @@ public class Produto extends AbstractEntity<Long> {
 	@Column(length = 100)
 	private String codigoBarras;
 
-	public List<PedidoProduto> getListaPedidosProdutos() {
-		return listaPedidosProdutos;
+	
+
+	public List<ProdutoPedido> getListaProdutosPedidos() {
+		return listaProdutosPedidos;
 	}
 
-	public void setListaPedidosProdutos(List<PedidoProduto> listaPedidosProdutos) {
-		this.listaPedidosProdutos = listaPedidosProdutos;
+	public void setListaProdutosPedidos(List<ProdutoPedido> listaProdutosPedidos) {
+		this.listaProdutosPedidos = listaProdutosPedidos;
 	}
 
 	private boolean ativo;

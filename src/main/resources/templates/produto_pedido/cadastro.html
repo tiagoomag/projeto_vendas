@@ -13,7 +13,7 @@
 	                    </li>
 	                </ul>
 	            </div>
-	            <a class="btn btn-primary btn-md" href="/pedidosProdutos/listar" role="button">
+	            <a class="btn btn-primary btn-md" href="/produtosPedidos/listar" role="button">
 	                <span class="oi oi-spreadsheet" title="Cadastro" aria-hidden="true"></span>
 	                <span>Listar Pedidos</span>
 	            </a>
@@ -21,8 +21,8 @@
 	
 	        <div class="container" id="cadastro">
 	        	<div th:replace="fragments/alert"></div>
-	            <form th:action="@{/pedidosProdutos/adicionarProduto}" 
-	            	  th:object="${pedidoProduto}" method="POST">
+	            <form th:action="@{/produtosPedidos/adicionarProduto}" 
+	            	  th:object="${produtoPedido}" method="POST">
 	                <div class="form-row">
 	                    <div class="form-group col-md-4">
 	                        <label for="produto">Produto</label>
