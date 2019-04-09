@@ -61,7 +61,7 @@ public class ProdutoPedidoController {
 	}
 	
 	@GetMapping("/removerProduto")
-	public String removerProduto(Produto produto, RedirectAttributes attr) {
+	public String removerProduto(@PathVariable("id") Long id, Produto produto, RedirectAttributes attr) {
 		listaProdutosPedido.remove(produto);
 		attr.addFlashAttribute("success", "Produto removido");
 		return "redirect:/produtosPedidos/cadastrar";
