@@ -22,7 +22,6 @@ import com.projeto.x.boot.service.ProdutoService;
 @RequestMapping("/produtosPedidos")
 public class ProdutoPedidoController {
 	
-	
 	@Autowired
 	ProdutoPedidoService produtoPedidoService;
 	
@@ -62,13 +61,12 @@ public class ProdutoPedidoController {
 		return "redirect:/produtosPedidos/cadastrar";
 	}
 	
-	@GetMapping("/removerProduto")
-	public String removerProduto(@PathVariable("id") Long id, ProdutoPedido produtoPedido, RedirectAttributes attr) {
+	@GetMapping("/removerProduto/{id}")
+	public String removerProduto(@PathVariable("id") Long id, RedirectAttributes attr) {
 		listaProdutosPedido.remove(produtoPedido);
 		attr.addFlashAttribute("success", "Produto removido");
 		return "redirect:/produtosPedidos/cadastrar";
 	}
-	
 	
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
@@ -120,8 +118,5 @@ public class ProdutoPedidoController {
 	public void setProdutoPedido(ProdutoPedido produtoPedido) {
 		this.produtoPedido = produtoPedido;
 	}
-	
-	
-	
 
 }
