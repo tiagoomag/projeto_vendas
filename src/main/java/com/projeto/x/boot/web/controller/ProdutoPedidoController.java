@@ -30,6 +30,8 @@ public class ProdutoPedidoController {
 	ProdutoService produtoService;
 	
 	private List<ProdutoPedido> listaProdutosPedido = new ArrayList<>();
+	private Produto produto = new Produto();
+	private ProdutoPedido produtoPedido = new ProdutoPedido();
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(ProdutoPedido produtoPedido) {
@@ -61,8 +63,8 @@ public class ProdutoPedidoController {
 	}
 	
 	@GetMapping("/removerProduto")
-	public String removerProduto(@PathVariable("id") Long id, Produto produto, RedirectAttributes attr) {
-		listaProdutosPedido.remove(produto);
+	public String removerProduto(@PathVariable("id") Long id, ProdutoPedido produtoPedido, RedirectAttributes attr) {
+		listaProdutosPedido.remove(produtoPedido);
 		attr.addFlashAttribute("success", "Produto removido");
 		return "redirect:/produtosPedidos/cadastrar";
 	}
@@ -102,6 +104,23 @@ public class ProdutoPedidoController {
 	public void setListaProdutosPedido(List<ProdutoPedido> listaProdutosPedido) {
 		this.listaProdutosPedido = listaProdutosPedido;
 	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public ProdutoPedido getProdutoPedido() {
+		return produtoPedido;
+	}
+
+	public void setProdutoPedido(ProdutoPedido produtoPedido) {
+		this.produtoPedido = produtoPedido;
+	}
+	
 	
 	
 
