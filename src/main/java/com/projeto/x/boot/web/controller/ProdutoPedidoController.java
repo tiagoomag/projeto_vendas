@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.projeto.x.boot.domain.ProdutoPedido;
+import com.projeto.x.boot.domain.Cliente;
+import com.projeto.x.boot.domain.Pedido;
 import com.projeto.x.boot.domain.Produto;
+import com.projeto.x.boot.service.ClienteService;
 import com.projeto.x.boot.service.ProdutoPedidoService;
 import com.projeto.x.boot.service.ProdutoService;
 
@@ -24,6 +27,9 @@ public class ProdutoPedidoController {
 	
 	@Autowired
 	ProdutoPedidoService produtoPedidoService;
+	
+	@Autowired
+	ClienteService clienteService;
 	
 	@Autowired
 	ProdutoService produtoService;
@@ -56,7 +62,6 @@ public class ProdutoPedidoController {
 		produtoPedido.setProduto(produto);
 		produtoPedido.setQuantidade(quantidade);
 		listaProdutosPedido.add(produtoPedido);
-		
 		attr.addFlashAttribute("success", "Produto adicionado");
 		return "redirect:/produtosPedidos/cadastrar";
 	}
@@ -92,6 +97,12 @@ public class ProdutoPedidoController {
 	public List<Produto> listaDeProdutos() {
 		return produtoService.buscarTodos();
 	}
+	
+	//lista de clientes
+	@ModelAttribute("clientes")
+	public List<Cliente> listaDeClientes(){
+		return clienteService.buscarTodos();
+	}
 
 	//lista de produtos adicionados
 	@ModelAttribute("listaProdutosAdicionados")
@@ -119,4 +130,5 @@ public class ProdutoPedidoController {
 		this.produtoPedido = produtoPedido;
 	}
 
+	
 }

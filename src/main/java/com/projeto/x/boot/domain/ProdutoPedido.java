@@ -12,10 +12,7 @@ import org.springframework.format.annotation.NumberFormat.Style;
 @Entity
 @Table(name = "pedidos_produtos")
 public class ProdutoPedido extends AbstractEntity<Long> {
-	
-	@Column(nullable = false)
-	private int quantidade;
-	
+
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	@Column(name="preco_unitario", nullable = false, columnDefinition = "DECIMAL(7) DEFAULT 0.00")
 	private BigDecimal precoUnitario;
@@ -31,6 +28,9 @@ public class ProdutoPedido extends AbstractEntity<Long> {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "produto_id_fk")
 	private Produto produto;
+	
+	@Column(nullable = false)
+	private int quantidade;
 
 	public BigDecimal getPrecoUnitario() {
 		return precoUnitario;

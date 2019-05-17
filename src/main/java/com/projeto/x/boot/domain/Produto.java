@@ -63,7 +63,7 @@ public class Produto extends AbstractEntity<Long> {
 	@Column(length = 100)
 	private String codigoBarras;
 
-	
+	private boolean ativo;
 
 	public List<ProdutoPedido> getListaProdutosPedidos() {
 		return listaProdutosPedidos;
@@ -73,9 +73,6 @@ public class Produto extends AbstractEntity<Long> {
 		this.listaProdutosPedidos = listaProdutosPedidos;
 	}
 
-	private boolean ativo;
-
-	
 	public String getNome() {
 		return nome;
 	}
